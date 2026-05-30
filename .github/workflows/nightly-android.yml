@@ -1,6 +1,9 @@
 name: Nightly Android
 
 on:
+  push:
+    branches: [master]
+  pull_request:
   # Automatically run at the end of every day.
   schedule:
     - cron: '0 0 * * *'
@@ -19,7 +22,6 @@ concurrency:
 jobs:
   CI:
     runs-on: ${{ matrix.os }}
-    if: github.repository == 'LadybirdBrowser/ladybird'
     strategy:
       fail-fast: false
       matrix:
